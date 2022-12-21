@@ -12,6 +12,6 @@ public class Asset
 
     public override string ToString()
     {
-        return $"Asset:{{Id={Id}, AssetGroupId={AssetGroupId}, Location={Location}, CapacityMw={CapacityMw}}}";
+        return $"Asset: {{Id: {Id}, AssetGroupId: {AssetGroupId}, Location: {Location}, CapacityMw: {CapacityMw}}}";
     }
 }
