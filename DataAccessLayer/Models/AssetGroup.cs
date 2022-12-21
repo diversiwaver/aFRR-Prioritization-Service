@@ -10,7 +10,7 @@ public class AssetGroup
 
     public override string ToString()
     {
-        return $"AssetGroup:{{Id={Id}, BalanceArea={BalanceArea}}}";
+        return $"AssetGroup: {{Id: {Id}, BalanceArea: {BalanceArea}}}";
     }
 }
 
