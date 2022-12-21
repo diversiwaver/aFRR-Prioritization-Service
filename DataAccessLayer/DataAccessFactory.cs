@@ -9,7 +9,7 @@ public class DataAccessFactory
         switch (typeof(T).Name)
         {
             case "IAssetDataAccess": return new AssetDataAccess(connectionString) as T;
-            case "IAssetGroupAccess": return new AssetGroupDataAccess(connectionString) as T;
+            case "IAssetGroupDataAccess": return new AssetGroupDataAccess(connectionString) as T;
             default:
                 throw new ArgumentException($"Unknown type {typeof(T).FullName}");
         }
