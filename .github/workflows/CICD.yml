@@ -11,6 +11,8 @@ jobs:
     environment: 
       name: Development
     steps:
+      - name: Add NuGet Private Source
+        run: dotnet nuget add source --username diversiwaver --password "${{secrets.NUGET_TOKEN}}" --store-password-in-clear-text --name github "https://nuget.pkg.github.com/diversiwaver/index.json"
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -31,6 +33,8 @@ jobs:
       name: Development
     needs: [Build]
     steps:
+      - name: Add NuGet Private Source
+        run: dotnet nuget add source --username diversiwaver --password "${{secrets.NUGET_TOKEN}}" --store-password-in-clear-text --name github "https://nuget.pkg.github.com/diversiwaver/index.json"
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -51,6 +55,8 @@ jobs:
     environment: 
       name: Production
     steps:
+      - name: Add NuGet Private Source
+        run: dotnet nuget add source --username diversiwaver --password "${{secrets.NUGET_TOKEN}}" --store-password-in-clear-text --name github "https://nuget.pkg.github.com/diversiwaver/index.json"
       - name: Checkout
         uses: actions/checkout@v3
         with:
