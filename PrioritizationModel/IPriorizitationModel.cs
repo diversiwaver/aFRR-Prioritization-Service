@@ -1,6 +1,8 @@
-﻿namespace PrioritizationModel;
+﻿using WebAPI.DTOs;
+
+namespace PrioritizationModel;
 
 public interface IPriorizitationModel
 {
-    Task<IEnumerable<SignalDto>> GetAssetRegulations(SignalDto);
+    Task<IEnumerable<SignalDTO>> GetAssetRegulations(SignalDTO signalDTO);
 }

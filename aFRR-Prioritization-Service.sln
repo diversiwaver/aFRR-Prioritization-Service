@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrioritizationModel", "PrioritizationModel\PrioritizationModel.csproj", "{42CEE861-2E49-493D-BBAD-B4E8FAB248AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataAccess", "TestDataAccess\TestDataAccess.csproj", "{907F9AB1-CD44-4CFE-A5BC-BB73A54D44E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDataAccess", "TestDataAccess\TestDataAccess.csproj", "{907F9AB1-CD44-4CFE-A5BC-BB73A54D44E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPrioritizationModel", "TestPrioritizationModel\TestPrioritizationModel.csproj", "{AA655EB8-B012-4580-932E-6D1E355929CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{907F9AB1-CD44-4CFE-A5BC-BB73A54D44E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907F9AB1-CD44-4CFE-A5BC-BB73A54D44E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{907F9AB1-CD44-4CFE-A5BC-BB73A54D44E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA655EB8-B012-4580-932E-6D1E355929CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA655EB8-B012-4580-932E-6D1E355929CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA655EB8-B012-4580-932E-6D1E355929CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA655EB8-B012-4580-932E-6D1E355929CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
