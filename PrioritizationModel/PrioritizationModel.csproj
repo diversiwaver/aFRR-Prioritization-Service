@@ -11,10 +11,16 @@
 
   <ItemGroup>
     <PackageReference Include="aFRRService.DTOs" Version="0.2.0-beta" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="MinVer" Version="4.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\PrioritizationService.DTOs\PrioritizationService.DTOs.csproj" />
   </ItemGroup>
 
 </Project>
