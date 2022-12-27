@@ -29,9 +29,8 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          dotnet tool install --global dotnet-releaser --verbosity detailed
-          dotnet nuget list source
-          dotnet-releaser build --github-token "${{secrets.NUGET_ACCESS_TOKEN}}" src/dotnet-releaser-build.toml
+          dotnet tool install --global dotnet-releaser
+          dotnet-releaser build --github-token "${{secrets.NUGET_TOKEN}}" src/dotnet-releaser-build.toml
   DeployDev:
     name: Deploy to Development
     runs-on: windows-latest
