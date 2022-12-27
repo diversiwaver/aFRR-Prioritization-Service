@@ -13,8 +13,11 @@ jobs:
     steps:
       - name: Add NuGet Private Source
         run: | 
-              dotnet nuget add source --username mirodmarinov --password "${{secrets.NUGET_ACCESS_TOKEN}}" --store-password-in-clear-text --name githubNuget "https://nuget.pkg.github.com/diversiwaver/index.json"
+              dotnet nuget add source --username mirodmarinov --password "${{secrets.NUGET_ACCESS_TOKEN}}" --store-password-in-clear-text --name githubNuget "https://nuget.pkg.github.com/diversiwaver/basedataaccess/index.json"
               dotnet nuget list source
+              dotnet nuget list --source githubNuget --search-term "data access"
+              dotnet nuget list --source githubNuget
+              
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -24,7 +27,12 @@ jobs:
         with:
           dotnet-version: '7.x.x'
       - name: Restore NuGet Packages
-        run: dotnet restore --verbosity detailed
+        run: |
+          dotnet nuget list
+          dotnet nuget list source
+          dotnet nuget list --source githubNuget --search-term "data access"
+          dotnet nuget list --source githubNuget
+          dotnet restore --verbosity detailed
       - name: Build
         shell: bash
         run: |
