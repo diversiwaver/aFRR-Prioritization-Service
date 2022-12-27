@@ -1,7 +1,7 @@
 [msbuild]
 project = "../aFRR-Prioritization-Service.sln"
 [github]
-user = "diversiwaver"
+user = "mirodmarinov"
 repo = "aFRR-Prioritization-Service"
 [nuget]
 publish = false
