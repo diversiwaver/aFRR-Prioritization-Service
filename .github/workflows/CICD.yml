@@ -12,9 +12,7 @@ jobs:
       name: Development
     steps:
       - name: Add NuGet Private Source
-        run: | 
-              dotnet nuget add source --name githubNuget --username mirodmarinov --password "${{secrets.NUGET_ACCESS_TOKEN}}" "https://nuget.pkg.github.com/diversiwaver/index.json"
-              dotnet nuget list source
+        run: dotnet nuget add source --username diversiwaver --password "${{secrets.NUGET_ACCESS_TOKEN}}" --store-password-in-clear-text --name github "https://nuget.pkg.github.com/diversiwaver/index.json"
               
       - name: Checkout
         uses: actions/checkout@v3
