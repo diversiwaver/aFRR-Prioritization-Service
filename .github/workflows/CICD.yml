@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           dotnet tool install --global dotnet-releaser
-          dotnet-releaser build --github-token "${{secrets.NUGET_TOKEN}}" src/dotnet-releaser-build.toml
+          dotnet-releaser build --github-token "${{secrets.GITHUB_TOKEN}}" src/dotnet-releaser-build.toml
   DeployDev:
     name: Deploy to Development
     runs-on: windows-latest
@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           dotnet tool install --global dotnet-releaser
-          dotnet-releaser run --github-token "${{secrets.NUGET_TOKEN}}" src/dotnet-releaser-test.toml
+          dotnet-releaser run --github-token "${{secrets.GITHUB_TOKEN}}" src/dotnet-releaser-test.toml
   DeployProd:
     name: Deploy to Production 
     needs: [DeployDev]
@@ -78,4 +78,4 @@ jobs:
         shell: bash
         run: |
           dotnet tool install --global dotnet-releaser
-          dotnet-releaser publish --github-token "${{secrets.GITHUB_TOKEN}}" --nuget-token "${{secrets.NUGET_TOKEN}}" src/dotnet-releaser-release.toml
+          dotnet-releaser publish --github-token "${{secrets.GITHUB_TOKEN}}" --nuget-token "${{secrets.NUGET_ACCESS_TOKEN}}" src/dotnet-releaser-release.toml
