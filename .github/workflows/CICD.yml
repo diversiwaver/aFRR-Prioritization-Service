@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           dotnet tool install --global dotnet-releaser
-          dotnet-releaser run --github-token "${{secrets.NUGET_ACCESS_TOKEN}}" src/dotnet-releaser-test.toml
+          dotnet-releaser run --github-token "${{secrets.NUGET_TOKEN}}" src/dotnet-releaser-test.toml
   DeployProd:
     name: Deploy to Production 
     needs: [DeployDev]
