@@ -15,8 +15,7 @@ jobs:
         run: | 
               dotnet nuget add source --username mirodmarinov --password "${{secrets.NUGET_ACCESS_TOKEN}}" --store-password-in-clear-text --name githubNuget "https://nuget.pkg.github.com/diversiwaver/basedataaccess/index.json"
               dotnet nuget list source
-              dotnet nuget list
-              dotnet nuget list --search-term "data access"
+              dotnet list package
               
       - name: Checkout
         uses: actions/checkout@v3
@@ -28,10 +27,8 @@ jobs:
           dotnet-version: '7.x.x'
       - name: Restore NuGet Packages
         run: |
-          dotnet nuget list
           dotnet nuget list source
-          dotnet nuget list --source githubNuget --search-term "data access"
-          dotnet nuget list --source githubNuget
+          dotnet list package
           dotnet restore --verbosity detailed
       - name: Build
         shell: bash
