@@ -15,20 +15,19 @@ internal class TestPrioritizationModelController
     [OneTimeSetUp]
     public void OneTimeSetup()
     {
-        var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddXmlFile("app.config");
+        var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddXmlFile(Path.Combine(Directory.GetCurrentDirectory(), "../../../App.config"));
         _configuration = builder.Build();
 
         _connectionString = _configuration.GetConnectionString("aFRR-Service-DataBase");
     }
 
-    [TestCase("v1")]
     [Test]
-    public async Task AssetDataAccess_ShouldGetAllAssets(string version)
+    public async Task PrioritizationController_ShouldGetPrioritizedAssets_WhenProvidedAModel()
     {
         //Arrange
         IAssetDataAccess dataAccess = DataAccessFactory.GetDataAccess<IAssetDataAccess>(_connectionString); // TODO: Use a Stub instead
         IPrioritizationModel prioritizationModel = new PrioritizationModelStub();
-        PriotizationModelController priotizationModelController = new(dataAccess, prioritizationModel);
+        PrioritizationModelController priotizationModelController = new(dataAccess, prioritizationModel);
         SignalDTO signalDTO = new()
         {
             Id = 0,
@@ -46,6 +45,8 @@ internal class TestPrioritizationModelController
         //Assert
         Assert.Multiple(() =>
         {
+            Assert.That(signalDTO, Is.Not.Null, "Returned Signal DTO was null!");
+            Assert.That(signalDTO.AssetsToReguate, Is.Not.Empty, "Returned Signal DTO had to assigned assets to regulate!");
             Assert.Fail("Task failed successfully (TODO: Figure out the asserts and finish the PrioritizationModelController)");
         });
     }
