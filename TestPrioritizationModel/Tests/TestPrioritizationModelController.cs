@@ -2,51 +2,51 @@
 using DataAccessLayer.Interfaces;
 using Microsoft.Extensions.Configuration;
 using PrioritizationModel;
-using WebAPI.DTOs;
+using PrioritizationService.DTOs;
+using TestPrioritizationModel.Stubs;
 
-namespace TestPrioritizationModel.Tests
+namespace TestPrioritizationModel.Tests;
+
+internal class TestPrioritizationModelController
 {
-    internal class TestPrioritizationModelController
+    string _connectionString;
+    IConfiguration _configuration;
+
+    [OneTimeSetUp]
+    public void OneTimeSetup()
     {
-        string _connectionString;
-        IConfiguration _configuration;
+        var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddXmlFile("app.config");
+        _configuration = builder.Build();
 
-        [OneTimeSetUp]
-        public void OneTimeSetup()
+        _connectionString = _configuration.GetConnectionString("aFRR-Service-DataBase");
+    }
+
+    [TestCase("v1")]
+    [Test]
+    public async Task AssetDataAccess_ShouldGetAllAssets(string version)
+    {
+        //Arrange
+        IAssetDataAccess dataAccess = DataAccessFactory.GetDataAccess<IAssetDataAccess>(_connectionString); // TODO: Use a Stub instead
+        IPrioritizationModel prioritizationModel = new PrioritizationModelStub();
+        PriotizationModelController priotizationModelController = new(dataAccess, prioritizationModel);
+        SignalDTO signalDTO = new()
         {
-            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddXmlFile("app.config");
-            _configuration = builder.Build();
+            Id = 0,
+            FromUtc = DateTime.UtcNow,
+            ToUtc = DateTime.UtcNow.AddHours(1),
+            Price = 25,
+            CurrencyId = 0,
+            QuantityMw = 35,
+            DirectionId = 1,
+            BidId = 0
+        };
+        //Act
+        signalDTO = priotizationModelController.GetAssetRegulationsAsync(signalDTO, _configuration);
 
-            _connectionString = _configuration.GetConnectionString("aFRR-Service-DataBase");
-        }
-
-        [TestCase("v1")]
-        [Test]
-        public async Task AssetDataAccess_ShouldGetAllAssets(string version)
+        //Assert
+        Assert.Multiple(() =>
         {
-            //Arrange
-            IAssetDataAccess dataAccess = DataAccessFactory.GetDataAccess<IAssetDataAccess>(_connectionString); // TODO: Use a Stub instead
-            IPrioritizationModel prioritizationModel = PrioritizationModelFactory.GetPrioritizationModel(version);
-            PriotizationModelController priotizationModelController = new(dataAccess, prioritizationModel);
-            SignalDTO signalDTO = new()
-            {
-                Id = 0,
-                FromUtc = DateTime.UtcNow,
-                ToUtc = DateTime.UtcNow.AddHours(1),
-                Price = 25,
-                CurrencyId = 0,
-                QuantityMw = 35,
-                DirectionId = 1,
-                BidId = 0
-            };
-            //Act
-            IEnumerable<SignalDTO> signalsDTOs = await priotizationModelController.GetAssetRegulationsAsync(signalDTO, _configuration);
-
-            //Assert
-            Assert.Multiple(() =>
-            {
-                Assert.Fail("Task failed successfully (TODO: Figure out the asserts and finish the PrioritizationModelController)");
-            });
-        }
+            Assert.Fail("Task failed successfully (TODO: Figure out the asserts and finish the PrioritizationModelController)");
+        });
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using WebAPI.DTOs;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Models;
 using PrioritizationService.DTOs;
@@ -20,18 +19,15 @@ public class PriotizationModelController
         _prioritizationModel = prioritizationModel;
     }
 
-    public async Task<IEnumerable<SignalDTO>> GetAssetRegulationsAsync(SignalDTO signalDTO, IConfiguration configuration)
+    public SignalDTO GetAssetRegulationsAsync(SignalDTO signalDTO, IConfiguration configuration)
     {
         string? connectionString = configuration.GetConnectionString("aFRR-Service-DataBase");
         if (connectionString is null)
         {
             throw new ArgumentException($"Connection string is null. Failed to retrieve connection string from {configuration}");
         }
-
-        _prioritizationModel.GetPrioritizedAssets(_assets, signalDTO.QuantityMw);
-        //TODO: assign returned assets to signal
-
-        return await Task.FromResult(new List<SignalDTO>());
+        signalDTO.AssetsToReguate = _prioritizationModel.GetPrioritizedAssets(_assets, signalDTO.QuantityMw);
+        return signalDTO;
     }
 
     private async Task InitializeOrderedAssetsAsync()
