@@ -6,13 +6,13 @@ using WebAPI.DTOs.DTOConverters;
 
 namespace PrioritizationModel;
 
-public class PriotizationModelController
+public class PrioritizationModelController
 {
     private IAssetDataAccess _assetDataAccess;
     private IPrioritizationModel _prioritizationModel;
     private IEnumerable<AssetDTO> _assets;
 
-    public PriotizationModelController(IAssetDataAccess assetDataAccess, IPrioritizationModel prioritizationModel)
+    public PrioritizationModelController(IAssetDataAccess assetDataAccess, IPrioritizationModel prioritizationModel)
     {
         _assetDataAccess = assetDataAccess;
         Task.Run(InitializeOrderedAssetsAsync).Wait();
