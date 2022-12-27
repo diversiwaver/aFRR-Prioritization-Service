@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           dotnet tool install --global dotnet-releaser
-          dotnet-releaser build --github-token "${{secrets.NUGET_TOKEN}}" src/dotnet-releaser-build.toml
+          dotnet-releaser build --github-token "${{secrets.NUGET_TOKEN2}}" src/dotnet-releaser-build.toml
   DeployDev:
     name: Deploy to Development
     runs-on: windows-latest
