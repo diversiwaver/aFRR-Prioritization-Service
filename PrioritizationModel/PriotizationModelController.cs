@@ -24,7 +24,7 @@ public class PrioritizationModelController
         string? connectionString = configuration.GetConnectionString("aFRR-Service-DataBase");
         if (connectionString is null)
         {
-            throw new ArgumentException($"Connection string is null. Failed to retrieve connection string from {configuration}");
+            throw new ArgumentNullException($"Connection string is null. Failed to retrieve connection string from {configuration}");
         }
         signalDTO.AssetsToReguate = _prioritizationModel.GetPrioritizedAssets(_assets, signalDTO.QuantityMw);
         return signalDTO;

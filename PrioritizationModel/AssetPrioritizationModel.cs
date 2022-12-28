@@ -28,8 +28,14 @@ internal class AssetPrioritizationModel : IPrioritizationModel
             {
                 asset.RegulationPercentage = (threshold - totalCapacityMw) / asset.CapacityMw * 100;
                 yield return asset;
+                totalCapacityMw += (asset.RegulationPercentage / 100) * asset.CapacityMw;
                 break;
             }
+        }
+
+        if (totalCapacityMw < threshold)
+        {
+            throw new ArgumentOutOfRangeException(nameof(threshold), threshold, $"totalCapacityMw({totalCapacityMw}) couldn't reach threshold.");
         }
     }
 }
