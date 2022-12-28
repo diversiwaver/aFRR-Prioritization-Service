@@ -7,6 +7,7 @@ internal class AssetPrioritizationModel : IPrioritizationModel
     public IEnumerable<AssetDTO> GetPrioritizedAssets(IEnumerable<AssetDTO> assets, decimal threshold)
     {
         decimal totalCapacityMw = 0;
+        HashSet<AssetDTO> prioritizedAssets = new();
 
         if (assets == null)
         {
@@ -18,24 +19,25 @@ internal class AssetPrioritizationModel : IPrioritizationModel
             // If CapacityMw is less than what's needed to meet the threshold, add 100% of it
             if (totalCapacityMw + asset.CapacityMw <= threshold)
             {
-                // Creates an iterator block in a method. When you use yield return, you can return a sequence of values one at a time, rather than all at once.
                 asset.RegulationPercentage = 100;
-                yield return asset;
+                prioritizedAssets.Add(asset);
                 totalCapacityMw += asset.CapacityMw;
             }
             // Otherwise, calculate how many percent of the CapacityMw is needed to match the exact threshold and break out of the loop
             else
             {
                 asset.RegulationPercentage = (threshold - totalCapacityMw) / asset.CapacityMw * 100;
-                yield return asset;
+                prioritizedAssets.Add(asset);
                 totalCapacityMw += (asset.RegulationPercentage / 100) * asset.CapacityMw;
                 break;
             }
         }
 
-        if (totalCapacityMw < threshold)
+        if (decimal.Round(totalCapacityMw, 4) < threshold)
         {
             throw new ArgumentOutOfRangeException(nameof(threshold), threshold, $"totalCapacityMw({totalCapacityMw}) couldn't reach threshold.");
         }
+
+        return prioritizedAssets;
     }
 }
