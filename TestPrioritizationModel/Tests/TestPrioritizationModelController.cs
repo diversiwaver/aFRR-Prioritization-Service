@@ -25,7 +25,7 @@ internal class TestPrioritizationModelController
     public void PrioritizationController_ShouldGetPrioritizedAssets_WhenProvidedAModel()
     {
         //Arrange
-        IAssetDataAccess dataAccess = DataAccessFactory.GetDataAccess<IAssetDataAccess>(_connectionString); // TODO: Use a Stub instead
+        IAssetDataAccess dataAccess = new AssetDataAccessStub();
         IPrioritizationModel prioritizationModel = new PrioritizationModelStub();
         PrioritizationModelController priotizationModelController = new(dataAccess, prioritizationModel);
         SignalDTO signalDTO = new()
