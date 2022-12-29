@@ -50,8 +50,8 @@ internal class IntegrationTestPrioritizationService
         Assert.Multiple(() =>
         {
             Assert.That(signalDTO, Is.Not.Null, "Returned SignalDTO was null!");
-            Assert.That(signalDTO.AssetsToReguate, Is.Not.Empty, "Returned SignalDTO had to assigned assets to regulate!");
-            Assert.That(regulatedCapacity, Is.EqualTo(threshold), "Calculated regulation does not match the threshold");
+            Assert.That(signalDTO.AssetsToReguate, Is.Not.Empty, "Returned SignalDTO had no assigned assets to regulate!");
+            Assert.That(regulatedCapacity, Is.EqualTo(threshold).Within(0.0001), "Calculated regulation does not match the threshold");
         });
     }
 }

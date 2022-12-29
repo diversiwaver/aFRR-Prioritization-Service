@@ -1,6 +1,5 @@
 ﻿using DataAccessLayer.Interfaces;
 using DataAccessLayer.Models;
-using PrioritizationService.DTOs;
 
 namespace TestPrioritizationModel.Stubs;
 
