@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="BaseDataAccess" Version="0.2.0-beta" />
-    <PackageReference Include="MinVer" Version="4.2.0">
+    <PackageReference Include="MinVer" Version="4.3.0-beta.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
