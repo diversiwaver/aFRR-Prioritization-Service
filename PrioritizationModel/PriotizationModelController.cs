@@ -8,14 +8,14 @@ namespace PrioritizationModel;
 
 public class PrioritizationModelController
 {
-    private IAssetDataAccess _assetDataAccess;
-    private IPrioritizationModel _prioritizationModel;
+    private readonly IAssetDataAccess _assetDataAccess;
+    private readonly IPrioritizationModel _prioritizationModel;
     private IEnumerable<AssetDTO> _assets;
 
     public PrioritizationModelController(IAssetDataAccess assetDataAccess, IPrioritizationModel prioritizationModel)
     {
         _assetDataAccess = assetDataAccess;
-        Task.Run(InitializeOrderedAssetsAsync).Wait();
+        Task.Run(InitializeAssetsAsync).Wait();
         _prioritizationModel = prioritizationModel;
     }
 
@@ -30,8 +30,8 @@ public class PrioritizationModelController
         return signalDTO;
     }
 
-    private async Task InitializeOrderedAssetsAsync()
+    private async Task InitializeAssetsAsync()
     {
-        _assets = DTOConverter<Asset, AssetDTO>.FromList(await _assetDataAccess.GetAllAsync()).OrderBy(asset => asset.CapacityMw);
+        _assets = DTOConverter<Asset, AssetDTO>.FromList(await _assetDataAccess.GetAllAsync());
     }
 }
