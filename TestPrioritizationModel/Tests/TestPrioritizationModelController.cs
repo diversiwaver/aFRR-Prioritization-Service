@@ -1,6 +1,4 @@
-﻿using DataAccessLayer;
-using DataAccessLayer.Interfaces;
-using Microsoft.Extensions.Configuration;
+﻿using DataAccessLayer.Interfaces;
 using PrioritizationModel;
 using PrioritizationService.DTOs;
 using TestPrioritizationModel.Stubs;
@@ -9,18 +7,6 @@ namespace TestPrioritizationModel.Tests;
 
 internal class TestPrioritizationModelController
 {
-    string? _connectionString;
-    IConfiguration _configuration;
-
-    [OneTimeSetUp]
-    public void OneTimeSetup()
-    {
-        string basePath = Path.Combine(Directory.GetCurrentDirectory(), "../../../");
-        _configuration = new ConfigurationBuilder().SetBasePath(basePath).AddJsonFile("appsettings.json", optional: false).Build();
-
-        _connectionString = _configuration.GetConnectionString("aFRR-Service-DataBase");
-    }
-
     [Test]
     public void PrioritizationController_ShouldGetPrioritizedAssets_WhenProvidedAModel()
     {
@@ -46,7 +32,7 @@ internal class TestPrioritizationModelController
         };
 
         //Act
-        signalDTO = priotizationModelController.GetAssetRegulationsAsync(signalDTO, _configuration);
+        signalDTO = priotizationModelController.GetAssetRegulationsAsync(signalDTO);
 
         //Assert
         Assert.Multiple(() =>

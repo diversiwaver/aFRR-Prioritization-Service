@@ -43,7 +43,7 @@ internal class IntegrationTestPrioritizationService
         };
 
         //Act
-        signalDTO = priotizationModelController.GetAssetRegulationsAsync(signalDTO, _configuration);
+        signalDTO = priotizationModelController.GetAssetRegulationsAsync(signalDTO);
         regulatedCapacity = signalDTO.AssetsToReguate.Sum(asset => (asset.RegulationPercentage / 100) * asset.CapacityMw);
 
         //Assert
