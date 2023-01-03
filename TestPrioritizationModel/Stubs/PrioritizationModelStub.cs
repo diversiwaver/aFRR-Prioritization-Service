@@ -5,7 +5,7 @@ namespace TestPrioritizationModel.Stubs;
 
 internal class PrioritizationModelStub : IPrioritizationModel
 {
-    public IEnumerable<AssetDTO> GetPrioritizedAssets(IEnumerable<AssetDTO> assets, decimal threshold)
+    public IEnumerable<AssetDTO> GetPrioritizedAssets(IEnumerable<AssetDTO> assets, decimal quantityThreshold)
     {
         return new List<AssetDTO> { 
             new AssetDTO() {Id = 1, CapacityMw = 10, RegulationPercentage = 100},

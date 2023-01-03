@@ -38,8 +38,8 @@ internal class TestPrioritizationModelController
         Assert.Multiple(() =>
         {
             Assert.That(signalDTO, Is.Not.Null, "Returned SignalDTO was null!");
-            Assert.That(signalDTO.AssetsToReguate, Is.Not.Empty, "Returned SignalDTO had to assigned assets to regulate!");
-            Assert.That(signalDTO.AssetsToReguate, Is.EquivalentTo(expectedResults).Using(new AssetDTOComparer()), "Returned assets did not match the assets from the stub.");
+            Assert.That(signalDTO.AssetsToRegulate, Is.Not.Empty, "Returned SignalDTO had to assigned assets to regulate!");
+            Assert.That(signalDTO.AssetsToRegulate, Is.EquivalentTo(expectedResults).Using(new AssetDTOComparer()), "Returned assets did not match the assets from the stub.");
         });
     }
 }

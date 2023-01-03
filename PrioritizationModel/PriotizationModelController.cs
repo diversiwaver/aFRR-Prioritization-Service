@@ -20,7 +20,7 @@ public class PrioritizationModelController
 
     public SignalDTO GetAssetRegulationsAsync(SignalDTO signalDTO)
     {
-        signalDTO.AssetsToReguate = _prioritizationModel.GetPrioritizedAssets(_assets, signalDTO.QuantityMw);
+        signalDTO.AssetsToRegulate = _prioritizationModel.GetPrioritizedAssets(_assets, signalDTO.QuantityMw);
         return signalDTO;
     }
 

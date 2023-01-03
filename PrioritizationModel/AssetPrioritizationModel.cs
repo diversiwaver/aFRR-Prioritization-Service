@@ -4,7 +4,7 @@ namespace PrioritizationModel;
 
 internal class AssetPrioritizationModel : IPrioritizationModel
 {
-    public IEnumerable<AssetDTO> GetPrioritizedAssets(IEnumerable<AssetDTO> assets, decimal threshold)
+    public IEnumerable<AssetDTO> GetPrioritizedAssets(IEnumerable<AssetDTO> assets, decimal quantityThreshold)
     {
         decimal totalCapacityMw = 0;
         HashSet<AssetDTO> prioritizedAssets = new();
@@ -18,7 +18,7 @@ internal class AssetPrioritizationModel : IPrioritizationModel
         foreach (AssetDTO asset in assets)
         {
             // If CapacityMw is less than what's needed to meet the threshold, add 100% of it
-            if (totalCapacityMw + asset.CapacityMw <= threshold)
+            if (totalCapacityMw + asset.CapacityMw <= quantityThreshold)
             {
                 asset.RegulationPercentage = 100;
                 prioritizedAssets.Add(asset);
@@ -27,7 +27,7 @@ internal class AssetPrioritizationModel : IPrioritizationModel
             // Otherwise, calculate how many percent of the CapacityMw is needed to match the exact threshold and break out of the loop
             else
             {
-                asset.RegulationPercentage = (threshold - totalCapacityMw) / asset.CapacityMw * 100;
+                asset.RegulationPercentage = (quantityThreshold - totalCapacityMw) / asset.CapacityMw * 100;
                 prioritizedAssets.Add(asset);
                 totalCapacityMw += (asset.RegulationPercentage / 100) * asset.CapacityMw;
                 break;
@@ -36,7 +36,7 @@ internal class AssetPrioritizationModel : IPrioritizationModel
 
         if (decimal.Round(totalCapacityMw, 4) < threshold)
         {
-            throw new ArgumentOutOfRangeException(nameof(threshold), threshold, $"totalCapacityMw({totalCapacityMw}) couldn't reach threshold.");
+            throw new ArgumentOutOfRangeException(nameof(quantityThreshold), quantityThreshold, $"totalCapacityMw({totalCapacityMw}) couldn't reach threshold.");
         }
 
         return prioritizedAssets;
