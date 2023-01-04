@@ -6,7 +6,7 @@ public static class PrioritizationModelFactory
     {
         switch(version)
         {
-            case "v1": return new AssetPrioritizationModel();
+            case "v1": return new BasicPrioritizationModel();
             default:
                 throw new ArgumentException($"Unknown prioritization model version {version}");
         }

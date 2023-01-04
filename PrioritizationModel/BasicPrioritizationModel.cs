@@ -2,7 +2,7 @@
 
 namespace PrioritizationModel;
 
-internal class AssetPrioritizationModel : IPrioritizationModel
+internal class BasicPrioritizationModel : IPrioritizationModel
 {
     public IEnumerable<AssetDTO> GetPrioritizedAssets(IEnumerable<AssetDTO> assets, decimal quantityThreshold)
     {
