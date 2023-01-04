@@ -34,7 +34,7 @@ internal class BasicPrioritizationModel : IPrioritizationModel
             }
         }
 
-        if (decimal.Round(totalCapacityMw, 4) < threshold)
+        if (decimal.Round(totalCapacityMw, 4) < quantityThreshold)
         {
             throw new ArgumentOutOfRangeException(nameof(quantityThreshold), quantityThreshold, $"totalCapacityMw({totalCapacityMw}) couldn't reach threshold.");
         }
