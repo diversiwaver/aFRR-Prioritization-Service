@@ -18,15 +18,15 @@ public class PrioritizationController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<aFRRService.DTOs.SignalDTO>> GetAssetRegulations(aFRRService.DTOs.SignalDTO signalDto)
+    public async Task<ActionResult<aFRRService.DTOs.SignalDTO>> GetAssetRegulations(aFRRService.DTOs.SignalDTO signalDTO)
     {
-        _logger.LogInformation("GetAssetRegulations method called for signalDto: {signalDto}", signalDto);
-        PrioritizationService.DTOs.SignalDTO signal = DTOConverter<aFRRService.DTOs.SignalDTO, PrioritizationService.DTOs.SignalDTO>.From(signalDto);
+        _logger.LogInformation("GetAssetRegulations method called for signalDto: {signalDTO}", signalDTO);
+        PrioritizationService.DTOs.SignalDTO signal = DTOConverter<aFRRService.DTOs.SignalDTO, PrioritizationService.DTOs.SignalDTO>.From(signalDTO);
         _logger.LogInformation("Converted DTO to signal");
         signal = _prioritizationModelController.GetAssetRegulationsAsync(signal);
         _logger.LogInformation("Prioritized {Count} assets to regulate for Signal Id: {Id}", signal.AssetsToRegulate.Count(), signal.Id);
-        signalDto.AssetsToRegulate = DTOConverter<PrioritizationService.DTOs.AssetDTO, aFRRService.DTOs.AssetDTO>.FromList(signal.AssetsToRegulate);
+        signalDTO.AssetsToRegulate = DTOConverter<PrioritizationService.DTOs.AssetDTO, aFRRService.DTOs.AssetDTO>.FromList(signal.AssetsToRegulate);
         _logger.LogInformation("Converted signal to DTO");
-        return Ok(signalDto);
+        return Ok(signalDTO);
     }
 }
