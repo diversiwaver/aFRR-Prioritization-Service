@@ -44,7 +44,7 @@ internal class TestPrioritizationWebAPI
     public async Task PrioritizationController_ShouldReturnSignalDTOWithAssetsToRegulateAndStatusCode200_WhenGettingPrioritization()
     {
         //Arrange
-        WebAPI.DTOs.SignalDTO signal = new()
+        aFRRService.DTOs.SignalDTO signal = new()
         {
             Id = 0,
             FromUtc = DateTime.UtcNow,
@@ -55,11 +55,11 @@ internal class TestPrioritizationWebAPI
             DirectionId = 1,
             BidId = 0
         };
-        List<AssetDTO> expectedAssets = new() {
-            new AssetDTO() { Id = 1, AssetGroupId = 1, CapacityMw = 8, RegulationPercentage = 100},
-            new AssetDTO() { Id = 2, AssetGroupId = 1, CapacityMw = 8, RegulationPercentage = 100},
-            new AssetDTO() { Id = 3, AssetGroupId = 1, CapacityMw = 6, RegulationPercentage = 100},
-            new AssetDTO() { Id = 4, AssetGroupId = 1, CapacityMw = 6, RegulationPercentage = 50}
+        List<aFRRService.DTOs.AssetDTO> expectedAssets = new() {
+            new  aFRRService.DTOs.AssetDTO() { Id = 1, AssetGroupId = 1, CapacityMw = 8, RegulationPercentage = 100},
+            new  aFRRService.DTOs.AssetDTO() { Id = 2, AssetGroupId = 1, CapacityMw = 8, RegulationPercentage = 100},
+            new  aFRRService.DTOs.AssetDTO() { Id = 3, AssetGroupId = 1, CapacityMw = 6, RegulationPercentage = 100},
+            new  aFRRService.DTOs.AssetDTO() { Id = 4, AssetGroupId = 1, CapacityMw = 6, RegulationPercentage = 50}
         };
 
         //Act
@@ -70,7 +70,7 @@ internal class TestPrioritizationWebAPI
         {
             if (actionResult is ObjectResult objRes)
             {
-                WebAPI.DTOs.SignalDTO? signalDto = objRes.Value as WebAPI.DTOs.SignalDTO;
+                aFRRService.DTOs.SignalDTO? signalDto = objRes.Value as aFRRService.DTOs.SignalDTO;
                 Assert.Multiple(() =>
                 {
                     Assert.That(objRes.StatusCode, Is.EqualTo(200), "Status code returned was not 200");
@@ -87,5 +87,37 @@ internal class TestPrioritizationWebAPI
         {
             Assert.Fail("Action result was null");
         }
+    }
+}
+
+internal class AssetDTOComparer : IEqualityComparer<aFRRService.DTOs.AssetDTO>
+{
+    public bool Equals(aFRRService.DTOs.AssetDTO x, aFRRService.DTOs.AssetDTO y)
+    {
+        if (ReferenceEquals(x, y))
+        {
+            return true;
+        }
+
+        if (x == null || y == null)
+        {
+            return false;
+        }
+
+        return x.Id == y.Id
+            && x.AssetGroupId == y.AssetGroupId
+            && x.Location == y.Location
+            && x.CapacityMw == y.CapacityMw
+            && x.RegulationPercentage == y.RegulationPercentage;
+    }
+
+    public int GetHashCode(aFRRService.DTOs.AssetDTO obj)
+    {
+        // Return a consistent value for objects with the same values
+        return obj.Id.GetHashCode()
+            ^ obj.AssetGroupId.GetHashCode()
+            ^ obj.Location.GetHashCode()
+            ^ obj.CapacityMw.GetHashCode()
+            ^ obj.RegulationPercentage.GetHashCode();
     }
 }

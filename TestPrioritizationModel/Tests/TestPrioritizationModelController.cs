@@ -44,7 +44,7 @@ internal class TestPrioritizationModelController
     }
 }
 
-public class AssetDTOComparer : IEqualityComparer<AssetDTO>
+internal class AssetDTOComparer : IEqualityComparer<AssetDTO>
 {
     public bool Equals(AssetDTO x, AssetDTO y)
     {
