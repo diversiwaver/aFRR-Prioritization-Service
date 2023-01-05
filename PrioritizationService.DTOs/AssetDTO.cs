@@ -1,6 +1,4 @@
-﻿using System.Security.Principal;
-
-namespace PrioritizationService.DTOs;
+﻿namespace PrioritizationService.DTOs;
 
 public class AssetDTO
 {
