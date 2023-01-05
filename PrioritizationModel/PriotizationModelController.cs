@@ -1,7 +1,7 @@
-﻿using DataAccessLayer.Interfaces;
+﻿using aFRRService.DTOs.DTOConverters;
+using DataAccessLayer.Interfaces;
 using DataAccessLayer.Models;
 using PrioritizationService.DTOs;
-using WebAPI.DTOs.DTOConverters;
 
 namespace PrioritizationModel;
 

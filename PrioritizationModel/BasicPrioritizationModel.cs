@@ -8,7 +8,7 @@ internal class BasicPrioritizationModel : IPrioritizationModel
     {
         decimal totalCapacityMw = 0;
         HashSet<AssetDTO> prioritizedAssets = new();
-        assets = assets.OrderBy(asset => asset.CapacityMw);
+        assets = assets.OrderByDescending(asset => asset.CapacityMw);
 
         if (assets == null)
         {
