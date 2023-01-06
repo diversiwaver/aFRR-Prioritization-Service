@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPrioritizationModel", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrioritizationService.DTOs", "PrioritizationService.DTOs\PrioritizationService.DTOs.csproj", "{E25D6360-3E67-45C9-9A38-49A69B35FA11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebAPI", "TestWebAPI\TestWebAPI.csproj", "{9B1E9BFD-0BCC-4F6B-8D33-3D65A8798DD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWebAPI", "TestWebAPI\TestWebAPI.csproj", "{9B1E9BFD-0BCC-4F6B-8D33-3D65A8798DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenchmarkTests", "BenchmarkTests\BenchmarkTests.csproj", "{CABADB18-BACB-4C6D-88FB-EE587BC60AAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{9B1E9BFD-0BCC-4F6B-8D33-3D65A8798DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B1E9BFD-0BCC-4F6B-8D33-3D65A8798DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B1E9BFD-0BCC-4F6B-8D33-3D65A8798DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CABADB18-BACB-4C6D-88FB-EE587BC60AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CABADB18-BACB-4C6D-88FB-EE587BC60AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CABADB18-BACB-4C6D-88FB-EE587BC60AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CABADB18-BACB-4C6D-88FB-EE587BC60AAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
