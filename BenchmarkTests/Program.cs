@@ -8,5 +8,6 @@ public class Program
     {
         Console.WriteLine("Initializing benchmarks");
         BenchmarkRunner.Run<BenchmarkDataAccess>();
+        BenchmarkRunner.Run<BenchmarkPrioritizationModel>();
     }
 }
