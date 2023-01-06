@@ -124,7 +124,7 @@ internal sealed class SealedPrioritizationModel
             {
                 assetSpan[i].RegulationPercentage = (quantityThreshold - totalCapacityMw) / assetSpan[i].CapacityMw * 100;
                 prioritizedAssets.Add(assetSpan[i]);
-                totalCapacityMw += quantityThreshold - totalCapacityMw;
+                totalCapacityMw += (assetSpan[i].RegulationPercentage / 100) * assetSpan[i].CapacityMw;
                 break;
             }
         }
