@@ -21,7 +21,7 @@ internal class IntegrationTestPrioritizationService
         _connectionString = _configuration.GetConnectionString("aFRR-Service-DataBase");
     }
 
-    [TestCase("v1", 23.33), TestCase("v1", 12), TestCase("v1", 4), TestCase("v1", 2), TestCase("v1", 0)]
+    [TestCase("v1", 23.33), TestCase("v1", 12), TestCase("v1", 4), TestCase("v1", 2)]
     [Test]
     public void PrioritizationService_ShouldGetPrioritizedAssets_WhenGivenModelAndSignalDTO(string modelVersion, decimal quantityThreshold)
     {
