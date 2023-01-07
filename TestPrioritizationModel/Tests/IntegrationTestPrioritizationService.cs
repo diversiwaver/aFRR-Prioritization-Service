@@ -33,8 +33,8 @@ internal class IntegrationTestPrioritizationService
         SignalDTO signalDTO = new()
         {
             Id = 0,
-            FromUtc = DateTime.UtcNow,
-            ToUtc = DateTime.UtcNow.AddHours(1),
+            ReceivedUtc = DateTime.UtcNow,
+            SentUtc = DateTime.UtcNow.AddHours(1),
             Price = 25,
             CurrencyId = 0,
             QuantityMw = quantityThreshold,

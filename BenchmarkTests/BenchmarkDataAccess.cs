@@ -3,7 +3,6 @@ using Dapper;
 using DataAccessLayer;
 using DataAccessLayer.Interfaces;
 using DataAccessLayer.Models;
-using Microsoft.CodeAnalysis;
 using System.Data;
 using System.Data.SqlClient;
 
