@@ -1,12 +1,13 @@
-﻿using DataAccessLayer.Interfaces;
+﻿using aFRRService.DTOs;
+using DataAccessLayer.Interfaces;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using PrioritizationModel;
-using PrioritizationService.DTOs;
 using TestPrioritizationModel.Tests;
 using WebAPI.Controllers;
+using AssetDTO = PrioritizationService.DTOs.AssetDTO;
 
 namespace TestWebAPI.Tests;
 
@@ -47,12 +48,10 @@ internal class TestPrioritizationWebAPI
         aFRRService.DTOs.SignalDTO signal = new()
         {
             Id = 0,
-            FromUtc = DateTime.UtcNow,
-            ToUtc = DateTime.UtcNow.AddHours(1),
-            Price = 15,
-            CurrencyId = 0,
+            ReceivedUtc = DateTime.UtcNow,
+            SentUtc = DateTime.UtcNow.AddHours(1),
             QuantityMw = 25,
-            DirectionId = 1,
+            Direction = Direction.Down,
             BidId = 0
         };
         List<aFRRService.DTOs.AssetDTO> expectedAssets = new() {
