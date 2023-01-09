@@ -2,8 +2,8 @@
 public class SignalDTO
 {
     public int Id { get; set; }
-    public DateTime FromUtc { get; set; }
-    public DateTime ToUtc { get; set; }
+    public DateTime ReceivedUtc { get; set; }
+    public DateTime SentUtc { get; set; }
     public decimal Price { get; set; }
     public int CurrencyId { get; set; }
     public decimal QuantityMw { get; set; }
