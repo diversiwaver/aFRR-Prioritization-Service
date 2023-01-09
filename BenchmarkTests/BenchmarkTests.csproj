@@ -5,6 +5,9 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <MinVerTagPrefix>v</MinVerTagPrefix>
+	  <MinVerIgnoreHeight>true</MinVerIgnoreHeight>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,10 +16,10 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="prioritizationmodel" Version="0.2.1-beta" />
     <PackageReference Include="PrioritizationService.DTOs" Version="0.2.1-beta" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="MinVer" Version="4.3.0-beta.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
-
 </Project>
