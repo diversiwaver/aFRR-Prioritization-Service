@@ -36,7 +36,7 @@ internal class IntegrationTestPrioritizationService
             ReceivedUtc = DateTime.UtcNow,
             SentUtc = DateTime.UtcNow.AddHours(1),
             QuantityMw = quantityThreshold,
-            DirectionId = 1,
+            Direction = Direction.Down,
             BidId = 0
         };
 

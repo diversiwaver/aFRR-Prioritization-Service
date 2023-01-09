@@ -5,7 +5,7 @@ public class SignalDTO
     public DateTime ReceivedUtc { get; set; }
     public DateTime SentUtc { get; set; }
     public decimal QuantityMw { get; set; }
-    public int DirectionId { get; set; }
+    public Direction Direction { get; set; }
     public int BidId { get; set; }
     public IEnumerable<AssetDTO>? AssetsToRegulate { get; set; }
 }

@@ -20,7 +20,7 @@ internal class TestPrioritizationModelController
             ReceivedUtc = DateTime.UtcNow,
             SentUtc = DateTime.UtcNow.AddHours(1),
             QuantityMw = 35,
-            DirectionId = 1,
+            Direction = Direction.Down,
             BidId = 0
         };
         IEnumerable<AssetDTO> expectedResults = new List<AssetDTO> {
