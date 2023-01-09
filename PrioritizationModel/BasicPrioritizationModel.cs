@@ -25,7 +25,7 @@ internal class BasicPrioritizationModel : IPrioritizationModel
                 totalCapacityMw += asset.CapacityMw;
             }
             // Otherwise, calculate how many percent of the CapacityMw is needed to match the exact threshold and break out of the loop
-            else
+            else if (totalCapacityMw != quantityThreshold)
             {
                 asset.RegulationPercentage = (quantityThreshold - totalCapacityMw) / asset.CapacityMw * 100;
                 prioritizedAssets.Add(asset);

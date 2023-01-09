@@ -11,11 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="aFRRService.DTOs" Version="1.0.0" />
     <PackageReference Include="BenchmarkDotNet" Version="0.13.3" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="prioritizationmodel" Version="0.2.1-beta" />
+    <PackageReference Include="PrioritizationService.DTOs" Version="0.2.1-beta" />
     <PackageReference Include="MinVer" Version="4.3.0-beta.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
-
 </Project>
