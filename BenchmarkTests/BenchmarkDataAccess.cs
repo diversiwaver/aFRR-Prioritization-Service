@@ -18,7 +18,7 @@ public class BenchmarkDataAccess
     public int Iterations;
 
     [GlobalSetup]
-    public async Task GlobalSetup()
+    public void GlobalSetup()
     {
         _assetDataAccess = DataAccessFactory.GetDataAccess<IAssetDataAccess>(Configuration.CONNECTION_STRING_TEST);
     }

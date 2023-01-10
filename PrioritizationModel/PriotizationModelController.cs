@@ -14,6 +14,7 @@ public class PrioritizationModelController
     public PrioritizationModelController(IAssetDataAccess assetDataAccess, IPrioritizationModel prioritizationModel)
     {
         _assetDataAccess = assetDataAccess;
+        _assets = Enumerable.Empty<AssetDTO>();
         Task.Run(InitializeAssetsAsync).Wait();
         _prioritizationModel = prioritizationModel;
     }

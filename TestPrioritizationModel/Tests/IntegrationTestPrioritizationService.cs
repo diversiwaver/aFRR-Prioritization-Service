@@ -3,7 +3,6 @@ using DataAccessLayer;
 using Microsoft.Extensions.Configuration;
 using PrioritizationModel;
 using PrioritizationService.DTOs;
-using TestPrioritizationModel.Stubs;
 
 namespace TestPrioritizationModel.Tests;
 
