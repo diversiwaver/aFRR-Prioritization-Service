@@ -11,19 +11,20 @@ namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PrioritizationController : ControllerBase
+public class PrioritizationsController : ControllerBase
 {
-    private readonly ILogger<PrioritizationController> _logger;
+    private readonly ILogger<PrioritizationsController> _logger;
     private readonly PrioritizationModelController _prioritizationModelController;
 
-    public PrioritizationController(ILogger<PrioritizationController> logger, PrioritizationModelController prioritizationController)
+    public PrioritizationsController(ILogger<PrioritizationsController> logger, PrioritizationModelController prioritizationController)
     {
         _logger = logger;
         _prioritizationModelController = prioritizationController;
     }
 
     [HttpGet]
-    public async Task<ActionResult<SignalDTOaFRR>> GetAssetRegulations(SignalDTOaFRR signalDTO)
+    [Route("AssetRegulations")]
+    public ActionResult<aFRRService.DTOs.SignalDTO> GetAssetRegulations(aFRRService.DTOs.SignalDTO signalDTO)
     {
         _logger.LogInformation("GetAssetRegulations method called for signalDto: {signalDTO}", signalDTO);
 

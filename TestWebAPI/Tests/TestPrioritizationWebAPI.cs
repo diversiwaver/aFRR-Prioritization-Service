@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using PrioritizationModel;
-using TestPrioritizationModel.Tests;
 using WebAPI.Controllers;
 using AssetDTO = PrioritizationService.DTOs.AssetDTO;
 
@@ -13,7 +12,7 @@ namespace TestWebAPI.Tests;
 
 internal class TestPrioritizationWebAPI
 {
-    PrioritizationController _webApiController;
+    PrioritizationsController _webApiController;
 
     [OneTimeSetUp]
     public void OneTimeSetup()
@@ -37,8 +36,8 @@ internal class TestPrioritizationWebAPI
                 new AssetDTO() { Id = 4, AssetGroupId = 1, CapacityMw = 6, RegulationPercentage = 50}
             });
         var mockPrioritizationModelController = new PrioritizationModelController(mockDataAccess.Object, mockModel.Object);
-        var mockLogger = new Mock<ILogger<PrioritizationController>>();
-        _webApiController = new PrioritizationController(mockLogger.Object, mockPrioritizationModelController);
+        var mockLogger = new Mock<ILogger<PrioritizationsController>>();
+        _webApiController = new PrioritizationsController(mockLogger.Object, mockPrioritizationModelController);
     }
 
     [Test]
@@ -62,7 +61,7 @@ internal class TestPrioritizationWebAPI
         };
 
         //Act
-        var actionResult = (await _webApiController.GetAssetRegulations(signal)).Result;
+        var actionResult = _webApiController.GetAssetRegulations(signal).Result;
 
         //Assert
         try
