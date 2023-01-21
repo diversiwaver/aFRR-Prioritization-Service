@@ -9,6 +9,8 @@
 	  <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <PackageReference Include="aFRRService.DTOs" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
